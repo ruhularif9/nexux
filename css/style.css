@@ -61,7 +61,8 @@ a {
     transition: all .3s ease
 }
 
-.header {
+/* Header Styles */
+.tf-header {
     padding-top: 20px;
     position: fixed;
     top: 0;
@@ -69,7 +70,6 @@ a {
     z-index: 999;
     background: linear-gradient(to bottom, rgba(10, 10, 30, .95), rgba(10, 10, 30, .7));
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border)
 }
 
 .header-inner {
@@ -80,19 +80,29 @@ a {
     align-items: center;
     justify-content: center;
     gap: 24px;
-    height: 72px
+    height: 72px;
+    position: relative;
+    /* Ensure specific positioning context */
 }
 
 .logo {
-    padding-left: 60px;
+    padding-left: 0;
     position: absolute;
     left: 24px;
     top: 50%;
-    transform: translateY(-50%)
+    transform: translateY(-50%);
+}
+
+.header-right {
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .logo img {
-    height: 14px;
+    height: 24px;
+    /* Slightly larger for visibility */
     width: auto;
     display: block
 }
@@ -108,13 +118,38 @@ a {
 
 .nav-links>li>a {
     font-size: 15px;
-    color: var(--muted);
+    color: rgb(115, 121, 155);
+    /* Precise inactive color */
     font-weight: 500;
-    transition: color .3s
+    position: relative;
+    padding: 10px 0;
+    display: block;
+    transition: color 0.3s ease;
 }
 
-.nav-links>li>a:hover {
-    color: #fff
+/* Hover & Active Text Color */
+.nav-links>li>a:hover,
+.nav-links>li.current>a {
+    color: #ffffff;
+}
+
+/* The Gradient Underline */
+.nav-links>li>a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(270deg, #000529 0%, #4a56ff 48.5%, #000529 100%);
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Show underline on hover & active */
+.nav-links>li:hover>a::after,
+.nav-links>li.current>a::after {
+    transform: scale(1);
 }
 
 .mega-dropdown {
@@ -131,39 +166,58 @@ a {
     font-size: .75rem
 }
 
+
 .mega-menu {
     position: fixed;
-    top: 90px;
+    top: calc(100% + 36px);
+    /* Matches translateY(36px) offset */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    gap: 60px;
-    padding: 50px 60px;
-    min-width: 1000px;
-    max-width: 90vw;
-    background: linear-gradient(180deg, rgba(15, 15, 45, .98), rgba(10, 10, 30, .98));
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    backdrop-filter: blur(20px);
+    gap: 157px;
+    /* Precise gap */
+    padding: 54px 69px 80px;
+    /* Precise padding */
+    width: 1056px;
+    /* Precise fixed width */
+    max-width: 95vw;
+    background: rgba(2, 6, 33, 0.9);
+    /* Frosted glass effect */
+    border-radius: 16px;
+    border: 0.8px solid rgb(32, 37, 104);
+    backdrop-filter: blur(50px);
+    /* Reduced blur as requested */
+    min-height: 520px;
     opacity: 0;
     pointer-events: none;
-    transition: .3s;
-    box-shadow: 0 16px 48px rgba(0, 0, 0, .5);
-    z-index: 998
-}
-.mega-menu::before {
-  content: "";
-  position: absolute;
-  top: -20px;       /* creates invisible space above dropdown */
-  left: 0;
-  right: 0;
-  height: 20px;
+    transition: all 0.3s ease;
+    box-shadow: none;
+    /* Reference has no shadow, relies on border/blur */
+    z-index: 998;
 }
 
+.mega-menu::before {
+    content: "";
+    position: absolute;
+    top: -40px;
+    /* Increased to cover the larger gap/offset */
+    left: 0;
+    right: 0;
+    height: 40px;
+}
 
 .mega-dropdown:hover .mega-menu {
     opacity: 1;
-    pointer-events: auto
+    pointer-events: auto;
+    top: calc(100% + 20px);
+    /* Slight animation up to final position */
+}
+
+
+.mega-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 .mega-column h4 {
@@ -200,6 +254,73 @@ a {
 
 .store-btn:hover {
     background: linear-gradient(135deg, #5a68e8, #a357e8)
+}
+
+/* Button Container */
+.tf-btn {
+    color: #ffffff;
+    background-color: transparent;
+    border-radius: 100px;
+    padding: 12px 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    /* Make sure you have a font loaded */
+    font-weight: 500;
+    font-size: 16px;
+    box-shadow: 0px 0px 16px 0px rgba(57, 115, 233, 0.15);
+    transition: all 0.3s ease;
+}
+
+/* 1. Gradient Border Layer (The "Ring") */
+/* Uses a mask to show only the border */
+.tf-btn .s1::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 100px;
+    padding: 1px;
+    /* Thickness of the border */
+    background: linear-gradient(270deg, #343754 0.33%, #aab1ec 53.7%, #343754 100.33%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: 2;
+    transition: all 0.6s ease;
+}
+
+/* 2. Background Layer */
+.tf-btn .s2 {
+    position: absolute;
+    inset: 1px;
+    /* Sits inside the border */
+    background: rgba(255, 255, 255, 0.02);
+    /* Subtle default background */
+    border-radius: 100px;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+/* 3. Text Layer */
+.tf-btn .btn-text {
+    position: relative;
+    z-index: 3;
+}
+
+/* Hover Effects */
+.tf-btn:hover {
+    box-shadow: 0px 0px 16px 5px rgba(53, 92, 233, 0.5);
+    /* Glowing shadow */
+}
+
+.tf-btn:hover .s2 {
+    background: #4f60fa;
+    /* Primary blue fill on hover */
 }
 
 .get-started-btn {
@@ -250,15 +371,17 @@ a {
     border-color: rgba(111, 124, 255, .5)
 }
 
+/* Removed hover animation as requested */
 .get-started-btn:hover::after {
-    animation: shimmer .6s ease-in forwards
+    opacity: 0;
 }
 
 .hero {
     padding-top: 140px;
     background-image: url(https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/background.png);
-    background-size: cover;
-    background-position: center;
+    background-size: 125%;
+    /* Zoomed hero background */
+    background-position: center top;
     background-repeat: no-repeat;
     position: relative;
     overflow: hidden;
@@ -275,7 +398,7 @@ a {
     height: 360px;
     pointer-events: none;
     z-index: 0;
-    background: radial-gradient(40% 30% at 50% 40%, rgba(95, 72, 255, .22), rgba(44, 22, 82, 0) 55%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(4, 6, 26, .5) 60%);
+    background: radial-gradient(40% 30% at 50% 40%, rgba(217, 217, 218, 0.986), rgba(251, 251, 251, 0) 55%), linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(4, 6, 26, .5) 60%);
     filter: blur(12px)
 }
 
@@ -318,72 +441,77 @@ a {
     margin-bottom: 40px
 }
 
-#subscribe-content {
-    margin: 40px 0 80px
+/* Form Wrap (Search/Subscribe) */
+.form-wrap {
+    position: relative;
+    width: 600px;
+    max-width: 100%;
+    margin: 60px auto 0px;
+    /* Removed bottom margin so error sits directly below */
+    border-radius: 100px;
+    padding: 1px;
+    /* Gradient border width */
+    background: linear-gradient(180deg, rgba(35, 42, 120, 0.8) 0%, rgba(101, 111, 254, 0.6) 50%, rgba(35, 42, 120, 0.8) 100%);
+    box-shadow: 0px 15px 40px -10px rgba(0, 0, 0, 0.6);
 }
 
-.subscribe-input-wrapper {
-    max-width: 540px;
-    margin: 0 auto;
+.form-inner {
+    background: rgba(6, 11, 40, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 100px;
+    padding: 8px 8px 8px 25px;
     display: flex;
-    background: #34399b;
-    border-radius: 50px;
-    padding: 8px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, .4);
-    border: 1px solid rgba(255, 255, 255, .08)
+    align-items: center;
 }
 
-.form-control-wrap {
-    flex: 1
+.form-inner input {
+    flex-grow: 1;
+    background: transparent;
+    border: none;
+    padding: 0;
+    height: 46px;
+    color: var(--text);
+    font-size: 1.6rem;
+    outline: none;
 }
 
-.form-control-wrap input {
-    flex: 1;
-    background: 0;
-    border: 0;
-    padding: 12px 10px 12px 12px;
-    color: #fff;
-    outline: 0;
-    font-size: .95rem;
-    text-align: left
+.form-inner input::placeholder {
+    color: var(--muted);
+    font-weight: 400;
+    font-size: 1.1rem;
+    /* Reduced placeholder size */
 }
 
-.form-control-wrap input::placeholder {
-    color: rgba(176, 184, 204, .5)
+/* Submit Button Specifics */
+.form-inner .tf-btn {
+    padding: 12px 34px;
+    /* Adjust padding for inner button */
 }
 
-.subscribe-button {
+.form-inner .tf-btn .s2 {
     background: #3a3ea5;
-    border: 0;
-    padding: 12px 28px;
-    border-radius: 50px;
-    color: #fff;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: .95rem;
-    transition: all .3s;
-    box-shadow: 0 4px 12px rgba(58, 62, 165, .25);
-    white-space: nowrap
+    /* Precise color from real site */
 }
 
-.subscribe-button:hover {
-    background: #1938a8;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 24px rgba(255, 107, 107, .4)
+
+
+.form-inner .tf-btn:hover .s2 {
+    background: #232a78;
+    /* Darker on hover */
 }
 
 .hero-image-wrapper {
-    margin: 100px auto 0;
+    margin: 40px auto 0;
     max-width: 100%;
     padding: 0 20px
 }
 
 .hero-image-wrapper img {
-    width: 120%;
+    width: 145%;
     height: auto;
     border-radius: 20px;
     box-shadow: 0 16px 64px rgba(111, 124, 255, .32);
-    transform: translateX(-10%)
+    transform: translateX(-15.5%)
 }
 
 .modal {
@@ -399,9 +527,24 @@ a {
     justify-content: center
 }
 
-.modal.active {
+.modal.show {
     display: flex
 }
+
+.email-error {
+    text-align: left;
+    /* Align left as requested */
+    width: 600px;
+    /* Match form width */
+    max-width: 100%;
+    margin: 10px auto 0;
+    padding-left: 25px;
+    /* Align text with input start */
+    min-height: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
 
 .modal-content {
     background: linear-gradient(180deg, rgba(21, 21, 46, .98), rgba(10, 10, 30, .98));
@@ -563,4 +706,39 @@ a {
     border-radius: 50%;
     filter: blur(.2px);
     opacity: .9
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, var(--primary), #b46bff);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(111, 124, 255, 0.4);
+    color: #fff;
+}
+
+
+/* Logo Sizing Override */
+.logo img {
+    width: 104px !important;
+    height: auto !important;
 }

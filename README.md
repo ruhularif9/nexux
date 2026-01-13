@@ -95,3 +95,10 @@ Replace image URLs in `index.html`:
 ## Contact
 
 For inquiries, contact: nexux.ai@gmail.com
+
+
+
+cd 'c:\Users\ruhul\OneDrive\Desktop\NEXUX'
+git branch -M main
+git remote add origin https://github.com/ruhularif9/nexux.git
+git push -u origin main

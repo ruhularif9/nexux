@@ -1,97 +1,91 @@
-// ================= UI BEHAVIORS: Modal, Smooth Scroll, Back-to-top, Small Enhancements =================
+document.addEventListener('DOMContentLoaded', () => {
+    // --- 1. Get Started Modal Logic ---
+    const modal = document.getElementById('modal');
+    const getStartedBtns = document.querySelectorAll('.get-started-btn');
+    const closeBtn = document.querySelector('.modal-close');
 
-// Modal (Get Started)
-const modal = document.getElementById('modal');
-const getStartedBtns = document.querySelectorAll('.get-started-btn');
-const modalClose = document.querySelector('.modal-close');
+    if (modal && getStartedBtns.length > 0) {
+        // Open Modal
+        getStartedBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+        });
 
-function openModal() {
-  if (!modal) return;
-  modal.classList.add('active');
-  // prevent body scroll
-  document.body.style.overflow = 'hidden';
-}
+        // Close Modal via X button
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            });
+        }
 
-function closeModal() {
-  if (!modal) return;
-  modal.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-getStartedBtns.forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.preventDefault();
-    openModal();
-  });
-});
-
-if (modalClose) {
-  modalClose.addEventListener('click', closeModal);
-}
-
-window.addEventListener('click', (e) => {
-  if (e.target === modal) closeModal();
-});
-
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeModal();
-});
-
-// Smooth scroll for same-page anchors
-document.addEventListener('click', function (e) {
-  const a = e.target.closest('a');
-  if (!a) return;
-  const href = a.getAttribute('href') || '';
-  if (href.startsWith('#')) {
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Close Modal via Outside Click
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
     }
-  }
-});
 
-// Back to top behavior
-const backToTop = document.querySelector('.back-to-top');
-function updateBackToTop() {
-  if (!backToTop) return;
-  if (window.scrollY > 400) {
-    backToTop.style.opacity = '1';
-    backToTop.style.pointerEvents = 'auto';
-  } else {
-    backToTop.style.opacity = '0';
-    backToTop.style.pointerEvents = 'none';
-  }
-}
+    // --- 2. Form Validation Logic ---
+    const emailInput = document.getElementById('emailInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const emailError = document.getElementById('emailError');
 
-window.addEventListener('scroll', updateBackToTop, { passive: true });
-updateBackToTop();
+    if (emailInput && submitBtn) {
+        submitBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent actual form submission for demo
 
-if (backToTop) {
-  backToTop.addEventListener('click', function (e) {
-    e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
+            const email = emailInput.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-// Small intersection observer to add .in-view for animated sections
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
+            if (email === "") {
+                showError("Please enter your email address.");
+            } else if (!emailRegex.test(email)) {
+                showError("Please enter a valid email address.");
+            } else {
+                // Success case
+                showError(""); // Clear errors
+                alert(`Success! You've joined the waitlist with: ${email}`);
+                emailInput.value = ""; // Reset input
+            }
+        });
+
+        function showError(message) {
+            if (emailError) {
+                emailError.textContent = message;
+                emailError.style.display = message ? 'block' : 'none';
+                emailError.style.color = '#ff4d4d';
+                emailError.style.marginTop = '10px';
+                emailError.style.fontSize = '14px';
+            }
+        }
     }
-  });
-}, { threshold: 0.12 });
 
-document.querySelectorAll('.feature-card, .benefit-card, .testimonial, .step, .pricing-card').forEach(el => io.observe(el));
+    // --- 3. Back to Top Button Logic ---
+    const backToTopBtn = document.querySelector('.back-to-top');
 
-// Keep header small on scroll
-const header = document.querySelector('.header');
-window.addEventListener('scroll', () => {
-  if (!header) return;
-  if (window.scrollY > 20) header.classList.add('scrolled'); else header.classList.remove('scrolled');
-}, { passive: true });
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.style.opacity = '1';
+                backToTopBtn.style.pointerEvents = 'auto';
+            } else {
+                backToTopBtn.style.opacity = '0';
+                backToTopBtn.style.pointerEvents = 'none';
+            }
+        });
 
-// End of main UI script
-
-
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});

@@ -1,168 +1,154 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nexux - AI-Powered Solutions</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexux - AI Powered Solutions</title>
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Arrows/Icons if needed or standard entities -->
+</head>
+
+<body>
     <!-- HEADER -->
-    <header class="header">
-      <div class="header-inner">
-        <div class="logo">
-          <img
-            src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/logo.svg"
-            alt=""
-          />
-        </div>
+    <header class="tf-header">
+        <div class="tf-container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="#">
+                        <img src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/logo.svg"
+                            alt="Nexux Logo" />
+                    </a>
+                </div>
 
-        <ul class="nav-links">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Help Center</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li class="mega-dropdown">
-            <a href="#"> All Pages <span class="arrow">&#9662;</span> </a>
-            <div class="mega-menu">
-              <div class="mega-column">
-                <h4>Pages</h4>
-                <a href="#">Home</a>
-                <a href="#">App</a>
-                <a href="#">About</a>
-                <a href="#">Waitlist</a>
-                <a href="#">FAQ</a>
-                <a href="#">Contact</a>
-              </div>
-              <div class="mega-column">
-                <h4>CMS</h4>
-                <a href="#">Blog</a>
-                <a href="#">Blog Single</a>
-                <a href="#">Pricing</a>
-                <a href="#">Changelog</a>
-              </div>
-              <div class="mega-column">
-                <h4>Utility Pages</h4>
-                <a href="#">Login</a>
-                <a href="#">Register</a>
-                <a href="#">404 Page</a>
-                <a href="#">Password</a>
-              </div>
-              <div class="mega-column">
-                <h4>Download</h4>
-                <a href="#" class="store-btn">Play Store</a>
-                <a href="#" class="store-btn">App Store</a>
-              </div>
+                <nav class="main-nav">
+                    <ul class="nav-links nav-list">
+                        <li class="item current"><a href="#">Home</a></li>
+                        <li class="item"><a href="#">About</a></li>
+                        <li class="item"><a href="#">Help Center</a></li>
+                        <li class="item"><a href="#">Pricing</a></li>
+                        <li class="item mega-dropdown">
+                            <a href="#" class="dropdown-toggle">All Pages &#9662;</a>
+                            <div class="sub-menu mega-menu">
+                                <div class="mega-column">
+                                    <h4>Pages</h4>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">App</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Waitlist</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>CMS</h4>
+                                    <ul>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Blog Single</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="#">Changelog</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>Utility Pages</h4>
+                                    <ul>
+                                        <li><a href="#">Login</a></li>
+                                        <li><a href="#">Register</a></li>
+                                        <li><a href="#">404 Page</a></li>
+                                        <li><a href="#">Password</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>Download</h4>
+                                    <ul>
+                                        <li><a href="#"><img
+                                                    src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/google-play.svg"
+                                                    alt="Play Store"></a></li>
+                                        <li><a href="#"><img
+                                                    src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/ios.svg"
+                                                    alt="App Store"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-right">
+                    <button class="tf-btn style-4 get-started-btn">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="btn-text">Get Started</span>
+                    </button>
+                </div>
             </div>
-          </li>
-        </ul>
-
-        <button class="get-started-btn" id="openModal">Get Started</button>
-      </div>
+        </div>
     </header>
-
 
     <!-- HERO SECTION -->
     <section class="hero">
-      <div class="hero-content">
-        <div class="subtitle-center">
-          <img
-            src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-left.svg"
-            alt="subtitle"
-          />
-          <p>A.I Driven</p>
-          <img
-            src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-right.svg"
-            alt="subtitle"
-          />
-        </div>
+        <div class="tf-container">
+            <div class="hero-content">
+                <div class="subtitle-center">
+                    <img src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-left.svg"
+                        alt="icon" />
+                    <p>A.I Driven</p>
+                    <img src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-right.svg"
+                        alt="icon" />
+                </div>
 
-        <h1>
-          Transform Your Business <br />
-          with AI-Powered Solutions
-        </h1>
-        <p>Our AI platform automates repetitive tasks</p>
+                <h1>
+                    Transform Your Business <br />
+                    with AI-Powered Solutions
+                </h1>
+                <p class="hero-desc">Our AI platform automates repetitive tasks, allowing your team to focus on
+                    high-value activities that drive growth.</p>
 
-        <div id="subscribe-content">
-          <div class="subscribe-input-wrapper">
-            <span class="form-control-wrap">
-              <input type="email" placeholder="Your Email Address" />
-            </span>
-            <button class="subscribe-button" type="submit">
-              <span>Submit</span>
-            </button>
-          </div>
-        </div>
+                <!-- Subscribe/Input Form -->
+                <div class="form-wrap">
+                    <div class="form-inner">
+                        <input type="email" id="emailInput" placeholder="Your Email Address" />
+                        <button id="submitBtn" class="tf-btn style-4">
+                            <span class="s1"></span>
+                            <span class="s2"></span>
+                            <span class="btn-text">Submit</span>
+                        </button>
+                    </div>
+                </div>
 
-        <div class="hero-image-wrapper">
-          <img
-            src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/banner.png"
-            alt="Dashboard preview"
-          />
+                <div class="email-error" id="emailError"></div>
+
+                <div class="hero-image-wrapper">
+                    <img src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/banner.png"
+                        alt="Dashboard preview" />
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section class="about-section">
-      <div class="container">
-        <div class="about-heading">
-          <div class="subtitle-center">
-            <img
-              src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-left.svg"
-              alt=""
-            />
-            <p>About Us</p>
-            <img
-              src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-right.svg"
-              alt=""
-            />
-          </div>
-
-          <h2>
-            We're a passionate team of innovators <br />
-            obsessed with using AI to streamline content creation.
-          </h2>
-
-          <a href="#" class="primary-btn"> More About Us </a>
+    <!-- Modal for Get Started -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Get Started</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
         </div>
+    </div>
 
-        <div class="about-grid">
-          <ul class="feature-list">
-            <li>
-              <span class="icon-flare" style="color: #ff9500"></span>Content
-              Ideas
-            </li>
-            <li>
-              <span class="icon-flare" style="color: #a855f7"></span>Writer's
-              Assist
-            </li>
-            <li>
-              <span class="icon-flare" style="color: #10b981"></span>Quality
-              Control
-            </li>
-            <li>
-              <span class="icon-flare" style="color: #3b82f6"></span>Faster
-              Workflow
-            </li>
-            <li>
-              <span class="icon-flare" style="color: #ef4444"></span>Increased
-              Output
-            </li>
-            <li>
-              <span class="icon-flare" style="color: #fbbf24"></span>Style
-              Variations
-            </li>
-            <li>
-              <span class="icon-flare" style="color: #f59e0b"></span>Super-Brain
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" aria-label="Back to Top">&uarr;</a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
