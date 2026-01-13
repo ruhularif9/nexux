@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexux - AI Powered Solutions</title>
+    <!-- Google Fonts: Inter and Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Arrows/Icons if needed or standard entities -->
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header class="tf-header">
+        <div class="tf-container">
+            <div class="header-inner">
+                <div class="logo">
+                    <a href="#">
+                        <img src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/logo.svg"
+                            alt="Nexux Logo" />
+                    </a>
+                </div>
+
+                <nav class="main-nav">
+                    <ul class="nav-links nav-list">
+                        <li class="item current"><a href="#">Home</a></li>
+                        <li class="item"><a href="#">About</a></li>
+                        <li class="item"><a href="#">Help Center</a></li>
+                        <li class="item"><a href="#">Pricing</a></li>
+                        <li class="item mega-dropdown">
+                            <a href="#" class="dropdown-toggle">All Pages &#9662;</a>
+                            <div class="sub-menu mega-menu">
+                                <div class="mega-column">
+                                    <h4>Pages</h4>
+                                    <ul>
+                                        <li><a href="#">Home</a></li>
+                                        <li><a href="#">App</a></li>
+                                        <li><a href="#">About</a></li>
+                                        <li><a href="#">Waitlist</a></li>
+                                        <li><a href="#">FAQ</a></li>
+                                        <li><a href="#">Contact</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>CMS</h4>
+                                    <ul>
+                                        <li><a href="#">Blog</a></li>
+                                        <li><a href="#">Blog Single</a></li>
+                                        <li><a href="#">Pricing</a></li>
+                                        <li><a href="#">Changelog</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>Utility Pages</h4>
+                                    <ul>
+                                        <li><a href="#">Login</a></li>
+                                        <li><a href="#">Register</a></li>
+                                        <li><a href="#">404 Page</a></li>
+                                        <li><a href="#">Password</a></li>
+                                    </ul>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>Download</h4>
+                                    <ul>
+                                        <li><a href="#"><img
+                                                    src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/google-play.svg"
+                                                    alt="Play Store"></a></li>
+                                        <li><a href="#"><img
+                                                    src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/ios.svg"
+                                                    alt="App Store"></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="header-right">
+                    <button class="tf-btn style-4 get-started-btn">
+                        <span class="s1"></span>
+                        <span class="s2"></span>
+                        <span class="btn-text">Get Started</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="tf-container">
+            <div class="hero-content">
+                <div class="subtitle-center">
+                    <img src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-left.svg"
+                        alt="icon" />
+                    <p>A.I Driven</p>
+                    <img src="https://wpriverthemes.com/nexux/wp-content/themes/nexux/icons/sub-title-right.svg"
+                        alt="icon" />
+                </div>
+
+                <h1>
+                    Transform Your Business <br />
+                    with AI-Powered Solutions
+                </h1>
+                <p class="hero-desc">Our AI platform automates repetitive tasks, allowing your team to focus on
+                    high-value activities that drive growth.</p>
+
+                <!-- Subscribe/Input Form -->
+                <div class="form-wrap">
+                    <div class="form-inner">
+                        <input type="email" id="emailInput" placeholder="Your Email Address" />
+                        <button id="submitBtn" class="tf-btn style-4">
+                            <span class="s1"></span>
+                            <span class="s2"></span>
+                            <span class="btn-text">Submit</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="email-error" id="emailError"></div>
+
+                <div class="hero-image-wrapper">
+                    <img src="https://wpriverthemes.com/nexux/wp-content/uploads/2024/12/banner.png"
+                        alt="Dashboard preview" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Get Started -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <h2>Get Started</h2>
+            <form>
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <button type="submit">Join Waitlist</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Back to top button -->
+    <a href="#" class="back-to-top" aria-label="Back to Top">&uarr;</a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
