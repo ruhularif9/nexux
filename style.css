@@ -2473,11 +2473,7 @@ a {
 }
 
 /* BETTER APPROACH: Font Size 0 is usually enough. Let's try explicit text suppression */
-.floating-scroll {
-    font-size: 0 !important;
-    line-height: 0 !important;
-    color: transparent !important;
-}
+
 
 .floating-scroll i {
     font-size: 20px !important;
@@ -4259,4 +4255,114 @@ a {
         align-items: center;
         text-align: center;
     }
+}
+
+/* Floating Scroll To Top */
+.floating-scroll {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: #6f7cff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    z-index: 9999;
+    /* Boosted Z-Index */
+    opacity: 0;
+    /* visibility: hidden; */
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 30px rgba(111, 124, 255, 0.4);
+    text-decoration: none;
+    overflow: hidden;
+    /* For smooth width transition */
+}
+
+.floating-scroll .text {
+    display: none;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.floating-scroll.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.floating-scroll:hover {
+    background: #5a68e8;
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+/* Footer Transformation Mode */
+.floating-scroll.footer-mode {
+    width: auto;
+    height: auto;
+    padding: 0;
+    /* Remove padding to look like text */
+    background: transparent !important;
+    /* Force transparent */
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0;
+    right: 0;
+    left: auto;
+    bottom: 450px;
+    /* Moved down by 100px as requested (was 550px) */
+    position: absolute;
+    right: 200px;
+    /* Kept spacing */
+    display: flex;
+    flex-direction: row;
+    /* Ensure row layout */
+    align-items: center;
+    gap: 8px;
+    /* Space between text and arrow */
+}
+
+.floating-scroll.footer-mode .text {
+    display: inline-block;
+    color: #fff;
+    margin-right: 0;
+    font-size: 18px;
+    /* Increased size */
+    text-transform: capitalize;
+    transition: color 0.3s ease;
+}
+
+/* Unhide the arrow in footer mode */
+.floating-scroll.footer-mode i {
+    display: inline-block !important;
+    /* Restore arrow */
+    font-size: 18px;
+    /* Match text size */
+    margin-top: 2px;
+    /* Slight alignment fix */
+    transition: color 0.3s ease;
+}
+
+/* Fix for any stray "small arrow" artifact */
+.footer .arrow {
+    display: none !important;
+}
+
+.floating-scroll.footer-mode:hover {
+    background: transparent !important;
+    transform: translateY(-5px);
+    box-shadow: none !important;
+}
+
+.floating-scroll.footer-mode:hover .text,
+.floating-scroll.footer-mode:hover i {
+    color: #550e88 !important;
+    /* Purple on hover */
 }
